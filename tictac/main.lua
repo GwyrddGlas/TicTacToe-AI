@@ -1,6 +1,7 @@
+local darkMode = true
+
 local crossSprite = nil
 local naughtSprite = nil
-
 function love.load()
     crossSprite = love.graphics.newImage("sprites/cross.png")
     naughtSprite = love.graphics.newImage("sprites/naught.png")
@@ -176,12 +177,18 @@ function love.update(dt)
     end
 end
 
+local function v4(r,g,b,a)
+    return {r=r, g=g, b=b, a=a}
+end
 
 local function drawMap()
     local width = love.graphics.getWidth()
     local height = love.graphics.getHeight()
 
-    love.graphics.setColor(1, 1, 1, 1)  -- White background 
+    local backgroundColour = darkMode and v4(30/255, 40/255, 55/255, 1) or v4(1, 1, 1, 1) 
+
+    love.graphics.setColor(backgroundColour.r, backgroundColour.g, backgroundColour.b, backgroundColour.a)  -- White background 
+    
     love.graphics.rectangle("fill", 0, 0, width, height)
 
     love.graphics.setColor(0, 0, 0, 1)  -- Black color for the grid
