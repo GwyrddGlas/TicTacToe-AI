@@ -146,6 +146,7 @@ local function aiMakeMove()
     if #emptyCells > 0 then
         local choice = emptyCells[math.random(#emptyCells)]
         createCross(choice.x, choice.y)
+        moveMade = true  -- Set the flag to indicate a move has been made
     end
 end
 
